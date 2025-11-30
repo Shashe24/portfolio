@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H P SHASHANK - Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Custom Animations */
+        @keyframes shine {
+            100% { transform: translateX(100%); }
+        }
+        .animate-shine {
+            animation: shine 1s;
+        }
+    </style>
+
+    <!-- React and Dependencies via Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react@18.2.0",
+            "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+            "lucide-react": "https://esm.sh/lucide-react@0.263.1"
+        }
+    }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState } from 'react';
+        import { createRoot } from 'react-dom/client';
+        import { Mail, Phone, Linkedin, Github, GraduationCap, Code, Database, BarChart3, Brain, Award, Briefcase, CheckCircle, Calendar, MapPin, ExternalLink, Zap, Rocket, Cpu, Globe } from 'lucide-react';
+
+        const App = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+            const scrollToSection = (id) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+                setIsMenuOpen(false);
+            };
+
+            return (
+                <div className="min-h-screen font-sans text-slate-100 overflow-x-hidden selection:bg-orange-500 selection:text-white bg-slate-950 relative">
+                
+                {/* GLOBAL BACKGROUND - Continuous Space Theme */}
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    {/* Deep Space Gradient */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#1e1b4b_0%,_#0f172a_50%,_#020617_100%)]"></div>
+                    
+                    {/* Stars Overlay */}
+                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                    
+                    {/* Floating Nebulas */}
+                    <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-indigo-600/10 rounded-full blur-[120px]"></div>
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-orange-600/10 rounded-full blur-[120px]"></div>
+                    <div className="absolute top-[40%] left-[60%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px]"></div>
+                </div>
+
+                <div className="relative z-10">
+                    {/* Navigation - Glassmorphic */}
+                    <nav className="fixed w-full bg-slate-950/70 backdrop-blur-xl text-white z-50 border-b border-white/5 shadow-2xl">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-center h-20">
+                            <div className="flex items-center space-x-4 group cursor-pointer">
+                                <div className="flex flex-col leading-none">
+                                    <span className="font-extrabold text-2xl md:text-3xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                                        H P SHASHANK
+                                    </span>
+                                    <span className="font-bold text-lg md:text-xl text-orange-500 tracking-tight -mt-1">
+                                        AI/ML Engineer
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            {/* Desktop Menu */}
+                            <div className="hidden md:flex items-center space-x-8">
+                                {['About', 'Education', 'Skills', 'Projects', 'Certifications'].map((item) => (
+                                <button 
+                                    key={item}
+                                    onClick={() => scrollToSection(item.toLowerCase())} 
+                                    className="relative text-sm font-medium text-slate-300 hover:text-orange-400 transition group"
+                                >
+                                    {item}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span>
+                                </button>
+                                ))}
+                                <button onClick={() => scrollToSection('contact')} className="relative px-6 py-2.5 bg-gradient-to-r from-orange-600 to-pink-600 rounded-full font-bold shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-105 transition duration-300 overflow-hidden border border-white/10">
+                                <span className="relative z-10 text-white">Contact</span>
+                                <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full hover:animate-shine"></div>
+                                </button>
+                            </div>
+
+                            {/* Mobile Menu Button */}
+                            <div className="md:hidden">
+                                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white hover:text-orange-400 transition">
+                                <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+                                </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    {isMenuOpen && (
+                        <div className="md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-slate-700 pb-6 px-4 absolute w-full shadow-2xl">
+                        {['About', 'Education', 'Skills', 'Projects', 'Certifications'].map((item) => (
+                            <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className="block w-full text-left py-4 text-lg font-medium border-b border-slate-800 hover:text-orange-400">{item}</button>
+                        ))}
+                        <button onClick={() => scrollToSection('contact')} className="block w-full mt-6 text-center py-4 bg-gradient-to-r from-orange-600 to-pink-600 rounded-xl text-white font-bold shadow-lg">Contact</button>
+                        </div>
+                    )}
+                    </nav>
+
+                    {/* Hero Section */}
+                    <header className="relative pt-32 pb-24 lg:pt-52 lg:pb-40 overflow-hidden perspective-1000">
+                    <div className="absolute inset-0 pointer-events-none">
+                        {/* 3D Floating Icons */}
+                        <div className="hidden lg:block absolute top-40 right-20 animate-bounce" style={{animationDuration: '6s'}}>
+                        <Brain className="w-24 h-24 text-slate-600/30 transform rotate-12 drop-shadow-2xl" />
+                        </div>
+                        <div className="hidden lg:block absolute bottom-40 left-20 animate-bounce" style={{animationDuration: '8s'}}>
+                        <Code className="w-32 h-32 text-slate-600/20 transform -rotate-12 drop-shadow-2xl" />
+                        </div>
+                    </div>
+                    
+                    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+                        <div className="inline-flex items-center px-6 py-2 rounded-full border border-orange-500/30 bg-slate-800/40 backdrop-blur-md text-orange-400 text-sm font-bold mb-8 shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:scale-105 transition duration-300 cursor-default">
+                        <span className="flex h-3 w-3 bg-orange-500 rounded-full mr-3 animate-pulse shadow-[0_0_10px_#f97316]"></span>
+                        Final-year AI/ML Student | Python | TensorFlow | Data Analytics
+                        </div>
+                        
+                        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-8 drop-shadow-2xl">
+                        Building the Future with <br />
+                        <span className="relative inline-block mt-2">
+                            <span className="absolute -inset-2 bg-gradient-to-r from-orange-600 to-pink-600 blur-3xl opacity-30"></span>
+                            <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500">
+                            AI & Automation
+                            </span>
+                        </span>
+                        </h1>
+                        
+                        <p className="mt-6 max-w-2xl mx-auto text-xl md:text-2xl text-slate-300 leading-relaxed font-light">
+                        Skilled in Python, SQL, TensorFlow, and data visualization. Experienced in machine learning projects and IoT automation with strong problem-solving and data analysis skills.
+                        </p>
+                        
+                        <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
+                        <button onClick={() => scrollToSection('projects')} className="group relative px-8 py-4 bg-orange-600 rounded-xl font-bold text-white shadow-[0_10px_20px_rgba(234,88,12,0.4)] hover:shadow-[0_20px_40px_rgba(234,88,12,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-orange-400/20">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></div>
+                            <span className="flex items-center text-lg font-mono">
+                            View Projects <ExternalLink className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                            </span>
+                        </button>
+                        <button onClick={() => scrollToSection('contact')} className="px-8 py-4 bg-slate-800/40 backdrop-blur-md text-white border border-slate-700/50 rounded-xl font-bold hover:bg-slate-700/50 hover:border-slate-500 transition-all duration-300 hover:-translate-y-1 font-mono">
+                            Get In Touch
+                        </button>
+                        </div>
+                    </div>
+                    </header>
+
+                    {/* About Section */}
+                    <section id="about" className="relative py-24 bg-transparent overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div className="space-y-8">
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg">
+                            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">Me</span>
+                            </h2>
+                            <div className="text-xl text-slate-300 leading-relaxed font-mono space-y-4">
+                            <p>
+                                Final-year <span className="font-semibold text-white bg-indigo-500/20 px-2 py-1 rounded border border-indigo-500/30">Artificial Intelligence & Machine Learning</span> student with a passion for building intelligent solutions.
+                            </p>
+                            <p className="text-lg text-slate-400 leading-relaxed">
+                                Skilled in <strong>Python, SQL, TensorFlow</strong>, and data visualization tools like <strong>Power BI</strong> and <strong>Tableau</strong>. Experienced in machine learning projects and IoT automation with strong problem-solving and data analysis skills.
+                            </p>
+                            <p className="text-lg text-slate-400 leading-relaxed">
+                                Seeking an entry-level role in <span className="font-bold text-indigo-400">IT/software development, data analysis, or machine learning engineering</span> to apply technical expertise and deliver scalable solutions.
+                            </p>
+                            </div>
+                            
+                            <div className="flex flex-wrap gap-4 pt-4">
+                            {['Problem Solver', 'Data Analyst', 'ML Engineer'].map((tag) => (
+                                <div key={tag} className="flex items-center bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 shadow-sm px-5 py-3 rounded-full hover:shadow-lg hover:border-indigo-400/50 transition duration-300 cursor-default group">
+                                <CheckCircle className="h-5 w-5 text-green-400 mr-2 group-hover:scale-110 transition" /> 
+                                <span className="font-semibold text-slate-200 font-mono">{tag}</span>
+                                </div>
+                            ))}
+                            </div>
+                        </div>
+
+                        {/* Skills Visualization */}
+                        <div className="relative h-[400px] w-full perspective-1000">
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-600/20 rounded-3xl transform rotate-3 shadow-2xl opacity-50 blur-xl"></div>
+                            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl p-8 flex flex-col justify-between transform transition hover:-rotate-1 hover:scale-105 duration-500">
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl pointer-events-none"></div>
+                                <div className="flex justify-between items-start relative z-10">
+                                <div className="p-4 bg-orange-500/20 rounded-2xl border border-orange-500/20">
+                                    <Brain className="h-10 w-10 text-orange-400" />
+                                </div>
+                                <div className="text-right">
+                                    <div className="text-sm font-bold text-slate-500 uppercase tracking-wider font-mono">Status</div>
+                                    <div className="text-green-400 font-bold flex items-center gap-1 font-mono">
+                                        <span className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></span> Available
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                {/* Skills Grid */}
+                                <div className="relative z-10 my-6 space-y-4">
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="bg-slate-950/50 rounded-xl border border-white/5 p-4 hover:border-orange-500/30 transition-colors">
+                                        <Code className="h-6 w-6 text-orange-400 mb-2" />
+                                        <div className="text-xs font-mono text-slate-300">Python</div>
+                                    </div>
+                                    <div className="bg-slate-950/50 rounded-xl border border-white/5 p-4 hover:border-indigo-500/30 transition-colors">
+                                        <Database className="h-6 w-6 text-indigo-400 mb-2" />
+                                        <div className="text-xs font-mono text-slate-300">SQL</div>
+                                    </div>
+                                    <div className="bg-slate-950/50 rounded-xl border border-white/5 p-4 hover:border-pink-500/30 transition-colors">
+                                        <Brain className="h-6 w-6 text-pink-400 mb-2" />
+                                        <div className="text-xs font-mono text-slate-300">TensorFlow</div>
+                                    </div>
+                                    <div className="bg-slate-950/50 rounded-xl border border-white/5 p-4 hover:border-green-500/30 transition-colors">
+                                        <BarChart3 className="h-6 w-6 text-green-400 mb-2" />
+                                        <div className="text-xs font-mono text-slate-300">Power BI</div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-slate-800 p-4 rounded-xl shadow-xl border border-indigo-500/30 animate-bounce" style={{animationDuration: '3s'}}>
+                                <Rocket className="h-8 w-8 text-indigo-400" />
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </section>
+
+                    {/* Education Section */}
+                    <section id="education" className="relative py-24 bg-transparent overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center mb-20">
+                        <h2 className="text-4xl font-extrabold text-white drop-shadow-lg">Education</h2>
+                        <p className="mt-4 text-xl text-slate-400 font-mono">Academic Journey</p>
+                        </div>
+
+                        <div className="relative max-w-5xl mx-auto">
+                        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-orange-500 shadow-[0_0_20px_rgba(168,85,247,0.6)]"></div>
+
+                        <div className="space-y-20">
+                            {/* B.E. */}
+                            <div className="relative flex flex-col md:flex-row items-center justify-between group">
+                            <div className="flex-1 w-full md:w-auto md:pr-16 mb-8 md:mb-0">
+                                <div className="relative bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:border-blue-500/50">
+                                <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-blue-400 font-mono">Current</div>
+                                <div className="flex items-center gap-3 mb-4 text-blue-400 font-bold">
+                                    <GraduationCap className="h-5 w-5" />
+                                    <span className="font-mono">B.E. AI & Machine Learning</span>
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-2">Navkis College of Engineering, Hassan</h3>
+                                <p className="text-slate-300 mb-4 font-mono text-sm">2022-2026</p>
+                                <div className="inline-block bg-white/5 border border-white/10 px-3 py-1 rounded text-sm font-mono text-slate-300">CGPA: 7.01</div>
+                                </div>
+                            </div>
+                            
+                            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center h-16 w-16 rounded-full bg-slate-900 text-white z-10 shadow-[0_0_30px_rgba(59,130,246,0.6)] border-2 border-blue-500 transition-transform group-hover:scale-110">
+                                <div className="absolute inset-0 bg-blue-500 rounded-full blur opacity-40"></div>
+                                <span className="relative font-bold text-xl text-blue-100 font-mono">01</span>
+                            </div>
+
+                            <div className="flex-1 w-full md:w-auto md:pl-16 opacity-10 hidden md:block text-8xl font-black text-white select-none mix-blend-overlay">B.E.</div>
+                            </div>
+
+                            {/* PUC */}
+                            <div className="relative flex flex-col md:flex-row items-center justify-between group">
+                            <div className="flex-1 w-full md:w-auto md:pr-16 text-right opacity-10 hidden md:block text-8xl font-black text-white select-none mix-blend-overlay">PUC</div>
+                            
+                            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center h-16 w-16 rounded-full bg-slate-900 text-white z-10 shadow-[0_0_30px_rgba(249,115,22,0.6)] border-2 border-orange-500 transition-transform group-hover:scale-110">
+                                <div className="absolute inset-0 bg-orange-500 rounded-full blur opacity-40"></div>
+                                <span className="relative font-bold text-xl text-orange-100 font-mono">02</span>
+                            </div>
+
+                            <div className="flex-1 w-full md:w-auto md:pl-16 order-1 md:order-2">
+                                <div className="relative bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)] hover:border-orange-500/50">
+                                <div className="absolute top-0 left-0 -mt-3 -ml-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-orange-400 font-mono">Completed</div>
+                                <div className="flex items-center gap-3 mb-4 text-orange-400 font-bold">
+                                    <GraduationCap className="h-5 w-5" />
+                                    <span className="font-mono">Pre-University Course</span>
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-2">Sri Ramakunjeshwara PU College, Ramakunja</h3>
+                                <p className="text-slate-300 mb-4 font-mono text-sm">2020-2022</p>
+                                <div className="inline-block bg-white/5 border border-white/10 px-3 py-1 rounded text-sm font-mono text-slate-300">Percentage: 62%</div>
+                                </div>
+                            </div>
+                            </div>
+
+                            {/* SSLC */}
+                            <div className="relative flex flex-col md:flex-row items-center justify-between group">
+                            <div className="flex-1 w-full md:w-auto md:pr-16 mb-8 md:mb-0">
+                                <div className="relative bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] hover:border-purple-500/50">
+                                <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-purple-400 font-mono">Completed</div>
+                                <div className="flex items-center gap-3 mb-4 text-purple-400 font-bold">
+                                    <GraduationCap className="h-5 w-5" />
+                                    <span className="font-mono">SSLC</span>
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-2">Sri Ramakunjeshwara High School, Ramakunja</h3>
+                                <p className="text-slate-300 mb-4 font-mono text-sm">2019-2020</p>
+                                <div className="inline-block bg-white/5 border border-white/10 px-3 py-1 rounded text-sm font-mono text-slate-300">Percentage: 65%</div>
+                                </div>
+                            </div>
+                            
+                            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center h-16 w-16 rounded-full bg-slate-900 text-white z-10 shadow-[0_0_30px_rgba(168,85,247,0.6)] border-2 border-purple-500 transition-transform group-hover:scale-110">
+                                <div className="absolute inset-0 bg-purple-500 rounded-full blur opacity-40"></div>
+                                <span className="relative font-bold text-xl text-purple-100 font-mono">03</span>
+                            </div>
+
+                            <div className="flex-1 w-full md:w-auto md:pl-16 opacity-10 hidden md:block text-8xl font-black text-white select-none mix-blend-overlay">SSLC</div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </section>
+
+                    {/* Skills Section */}
+                    <section id="skills" className="relative py-24 bg-transparent overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center mb-20">
+                        <h2 className="text-4xl font-extrabold text-white drop-shadow-xl">Technical Skills</h2>
+                        <div className="h-1 w-20 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mt-4 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.5)]"></div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {[
+                            { icon: Code, color: 'orange', title: 'Programming', desc: 'C++, Python, JavaScript, HTML, CSS' },
+                            { icon: Database, color: 'indigo', title: 'Databases', desc: 'SQL, MongoDB' },
+                            { icon: BarChart3, color: 'pink', title: 'Data Visualization', desc: 'Power BI, Tableau' },
+                            { icon: Brain, color: 'green', title: 'ML & AI', desc: 'TensorFlow, OpenCV, Pandas, NumPy, CNN' },
+                            { icon: Briefcase, color: 'yellow', title: 'Developer Tools', desc: 'Git, Google Colab, AWS (Basic)' }
+                        ].map((item, index) => (
+                            <div key={index} className="group relative p-8 bg-slate-800/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-500 hover:-translate-y-3 overflow-hidden">
+                            <div className={`absolute inset-0 bg-gradient-to-br from-${item.color}-600/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500`}></div>
+                            
+                            <div className={`relative z-10 h-14 w-14 bg-${item.color}-500/20 border border-${item.color}-500/30 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition duration-300 shadow-[0_0_15px_rgba(0,0,0,0.3)]`}>
+                                <item.icon className={`h-7 w-7 text-${item.color}-400 drop-shadow-lg`} />
+                            </div>
+                            <h3 className="relative z-10 text-xl font-bold text-white mb-3 tracking-wide">{item.title}</h3>
+                            <p className="relative z-10 text-slate-400 leading-relaxed font-light font-mono text-sm">{item.desc}</p>
+                            </div>
+                        ))}
+                        </div>
+                    </div>
+                    </section>
+
+                    {/* Projects Section */}
+                    <section id="projects" className="relative py-24 bg-transparent overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center mb-20">
+                        <h2 className="text-4xl font-extrabold text-white drop-shadow-xl">Projects</h2>
+                        <div className="h-1 w-20 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mt-4 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.5)]"></div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { 
+                                title: 'Alexa Home Automation by IoT', 
+                                desc: 'Built a voice-controlled smart home automation system with Alexa Skills Kit and AWS Lambda. Enabled real-time appliance control and remote monitoring.',
+                                tech: 'IoT Devices, AWS Lambda, Alexa Skills Kit, Python',
+                                impact: 'Reduced manual operation by 70%',
+                                color: 'orange'
+                            },
+                            { 
+                                title: 'AI Face Recognition Attendance System', 
+                                desc: 'Implemented an automated attendance system using real-time facial recognition. Integrated OpenCV and TensorFlow for detection and recognition.',
+                                tech: 'Python, OpenCV, TensorFlow, Google Colab',
+                                impact: '95% recognition accuracy, improved efficiency by ~80%',
+                                color: 'indigo'
+                            },
+                            { 
+                                title: 'RPA-Based Email Automation', 
+                                desc: 'Built an RPA workflow with UiPath to automate admission query responses. Extracted details from PDF files using AI and auto-responded to emails.',
+                                tech: 'UiPath, AI Document Processing, Email Automation',
+                                impact: 'Reduced manual email handling by ~90%',
+                                color: 'pink'
+                            }
+                        ].map((project, index) => (
+                            <div key={index} className="group relative bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)] hover:border-orange-500/50">
+                            <div className={`absolute top-0 right-0 -mt-3 -mr-3 bg-${project.color}-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-${project.color}-400 font-mono`}>Project</div>
+                            <div className={`flex items-center gap-3 mb-4 text-${project.color}-400 font-bold`}>
+                                <Briefcase className="h-5 w-5" />
+                                <span className="font-mono text-sm">Featured</span>
+                            </div>
+                            <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
+                            <p className="text-slate-300 mb-4 font-mono text-sm leading-relaxed">{project.desc}</p>
+                            <div className="mb-4">
+                                <div className="text-xs font-bold text-slate-500 uppercase tracking-wider font-mono mb-2">Tech Stack</div>
+                                <div className="text-slate-400 text-sm font-mono">{project.tech}</div>
+                            </div>
+                            <div className="inline-block bg-green-500/20 border border-green-500/30 px-3 py-1 rounded text-sm font-mono text-green-300">
+                                {project.impact}
+                            </div>
+                            </div>
+                        ))}
+                        </div>
+                    </div>
+                    </section>
+
+                    {/* Certifications Section */}
+                    <section id="certifications" className="relative py-24 bg-transparent overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center mb-20">
+                        <h2 className="text-4xl font-extrabold text-white drop-shadow-xl">Certifications</h2>
+                        <div className="h-1 w-20 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto mt-4 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.5)]"></div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {[
+                            'Introduction to Internet of Things – NPTEL',
+                            'Data Visualization – Tata Forage',
+                            'Data Analysis Micro Degree – EdyodA',
+                            'Geo-data Sharing and Cyber Security – ISRO',
+                            'Robotic Process Automation (RPA) – 6-Day Student Development Program'
+                        ].map((cert, index) => (
+                            <div key={index} className="group relative bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl shadow-2xl border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)] hover:border-orange-500/50">
+                            <div className="flex items-start gap-4">
+                                <div className="p-3 bg-orange-500/20 rounded-xl border border-orange-500/30">
+                                    <Award className="h-6 w-6 text-orange-400" />
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-lg font-bold text-white mb-2">{cert}</h3>
+                                    <button className="text-sm text-orange-400 hover:text-orange-300 font-mono flex items-center gap-1">
+                                        View Certification <ExternalLink className="h-4 w-4" />
+                                    </button>
+                                </div>
+                            </div>
+                            </div>
+                        ))}
+                        </div>
+                    </div>
+                    </section>
+
+                    {/* Achievements & Extracurricular */}
+                    <section id="achievements" className="relative py-24 bg-transparent overflow-hidden">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        {/* Achievements */}
+                        <div>
+                            <h2 className="text-3xl font-extrabold text-white mb-8 drop-shadow-lg">Achievements</h2>
+                            <div className="space-y-4">
+                            {[
+                                'Certified in SQL for Data Analysis with strong query and data manipulation skills',
+                                'Built a Power BI dashboard that cut reporting time by 30%',
+                                'Created a CIE marks calculator in React, used by 50+ students'
+                            ].map((achievement, index) => (
+                                <div key={index} className="flex items-start gap-4 bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-orange-500/30 transition-colors">
+                                <div className="p-2 bg-green-500/20 rounded-lg border border-green-500/30 mt-1">
+                                    <CheckCircle className="h-5 w-5 text-green-400" />
+                                </div>
+                                <p className="text-slate-300 font-mono text-sm leading-relaxed">{achievement}</p>
+                                </div>
+                            ))}
+                            </div>
+                        </div>
+
+                        {/* Extracurricular */}
+                        <div>
+                            <h2 className="text-3xl font-extrabold text-white mb-8 drop-shadow-lg">Extracurricular Activities</h2>
+                            <div className="space-y-4">
+                            <div className="bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-indigo-500/30 transition-colors">
+                                <p className="text-slate-300 font-mono text-sm leading-relaxed">
+                                Strengthened teamwork, leadership, communication, and time management skills through team coordination and morale-building.
+                                </p>
+                            </div>
+                            <div className="bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-pink-500/30 transition-colors">
+                                <p className="text-slate-300 font-mono text-sm leading-relaxed">
+                                Contributed to community service through Swachh Bharat, digital literacy, and volunteer teaching.
+                                </p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <footer id="contact" className="relative bg-transparent text-white py-32 overflow-hidden">
+                    <div className="relative max-w-5xl mx-auto px-4 text-center z-10">
+                        <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight leading-tight">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500 drop-shadow-2xl">
+                            Let's Connect
+                        </span>
+                        </h2>
+                        <p className="text-slate-300 text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+                        Open to opportunities in <span className="text-white font-bold">IT/software development, data analysis, or machine learning engineering</span>.
+                        </p>
+
+                        {/* Floating Decorative Elements */}
+                        <div className="absolute -top-10 -left-20 text-orange-500 animate-bounce hidden lg:block" style={{ animationDuration: '3s' }}>
+                        <Zap className="w-32 h-32 opacity-60 drop-shadow-2xl" />
+                        </div>
+                        <div className="absolute -bottom-16 -right-20 text-purple-500 animate-bounce hidden lg:block" style={{ animationDuration: '4s' }}>
+                        <Rocket className="w-28 h-28 opacity-50 drop-shadow-2xl transform rotate-45" />
+                        </div>
+
+                        {/* Contact Info */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                        <a href="mailto:shashankshashe2003@gmail.com" className="group relative bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2">
+                            <Mail className="h-8 w-8 text-orange-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                            <div className="text-white font-bold mb-2">Email</div>
+                            <div className="text-slate-400 font-mono text-sm">shashankshashe2003@gmail.com</div>
+                        </a>
+                        <a href="tel:+919481332759" className="group relative bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-2">
+                            <Phone className="h-8 w-8 text-indigo-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                            <div className="text-white font-bold mb-2">Phone</div>
+                            <div className="text-slate-400 font-mono text-sm">+91 9481332759</div>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="group relative bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2">
+                            <Linkedin className="h-8 w-8 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                            <div className="text-white font-bold mb-2">LinkedIn</div>
+                            <div className="text-slate-400 font-mono text-sm">Connect with me</div>
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="group relative bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-pink-500/50 transition-all duration-300 hover:-translate-y-2">
+                            <Github className="h-8 w-8 text-pink-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                            <div className="text-white font-bold mb-2">GitHub</div>
+                            <div className="text-slate-400 font-mono text-sm">View my code</div>
+                        </a>
+                        </div>
+
+                        <p className="text-slate-600 text-xs font-mono">&copy; 2025 H P SHASHANK. All rights reserved.</p>
+                    </div>
+                    </footer>
+                </div>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
