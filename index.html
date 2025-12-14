@@ -44,7 +44,7 @@
     <script type="text/babel" data-type="module">
         import React, { useState } from 'react';
         import { createRoot } from 'react-dom/client';
-        import { Mail, Phone, Linkedin, Github, GraduationCap, Code, Database, BarChart3, Brain, Award, Briefcase, CheckCircle, Calendar, MapPin, ExternalLink, Zap, Rocket, Cpu, Globe } from 'lucide-react';
+        import { Mail, Phone, Linkedin, Github, GraduationCap, Code, Database, BarChart3, Brain, Award, Briefcase, CheckCircle, Calendar, MapPin, ExternalLink, Zap, Rocket, Cpu, Globe, Users } from 'lucide-react';
 
         const App = () => {
             const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -142,36 +142,75 @@
                         </div>
                     </div>
                     
-                    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-                        <div className="inline-flex items-center px-6 py-2 rounded-full border border-orange-500/30 bg-slate-800/40 backdrop-blur-md text-orange-400 text-sm font-bold mb-8 shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:scale-105 transition duration-300 cursor-default">
-                        <span className="flex h-3 w-3 bg-orange-500 rounded-full mr-3 animate-pulse shadow-[0_0_10px_#f97316]"></span>
-                        Final-year AI/ML Student | Python | TensorFlow | Data Analytics
-                        </div>
-                        
-                        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-8 drop-shadow-2xl">
-                        Building the Future with <br />
-                        <span className="relative inline-block mt-2">
-                            <span className="absolute -inset-2 bg-gradient-to-r from-orange-600 to-pink-600 blur-3xl opacity-30"></span>
-                            <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500">
-                            AI & Automation
-                            </span>
-                        </span>
-                        </h1>
-                        
-                        <p className="mt-6 max-w-2xl mx-auto text-xl md:text-2xl text-slate-300 leading-relaxed font-light">
-                        Skilled in Python, SQL, TensorFlow, and data visualization. Experienced in machine learning projects and IoT automation with strong problem-solving and data analysis skills.
-                        </p>
-                        
-                        <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
-                        <button onClick={() => scrollToSection('projects')} className="group relative px-8 py-4 bg-orange-600 rounded-xl font-bold text-white shadow-[0_10px_20px_rgba(234,88,12,0.4)] hover:shadow-[0_20px_40px_rgba(234,88,12,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-orange-400/20">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></div>
-                            <span className="flex items-center text-lg font-mono">
-                            View Projects <ExternalLink className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                            </span>
-                        </button>
-                        <button onClick={() => scrollToSection('contact')} className="px-8 py-4 bg-slate-800/40 backdrop-blur-md text-white border border-slate-700/50 rounded-xl font-bold hover:bg-slate-700/50 hover:border-slate-500 transition-all duration-300 hover:-translate-y-1 font-mono">
-                            Get In Touch
-                        </button>
+                    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            {/* Left Side - Text Content */}
+                            <div className="text-left lg:text-left">
+                                <div className="inline-flex items-center px-6 py-2 rounded-full border border-orange-500/30 bg-slate-800/40 backdrop-blur-md text-orange-400 text-sm font-bold mb-8 shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:scale-105 transition duration-300 cursor-default">
+                                <span className="flex h-3 w-3 bg-orange-500 rounded-full mr-3 animate-pulse shadow-[0_0_10px_#f97316]"></span>
+                                AI/ML Student | Python | TensorFlow | Data Analytics
+                                </div>
+                                
+                                <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-8 drop-shadow-2xl">
+                                Building the Future with <br />
+                                <span className="relative inline-block mt-2">
+                                    <span className="absolute -inset-2 bg-gradient-to-r from-orange-600 to-pink-600 blur-3xl opacity-30"></span>
+                                    <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-500 to-indigo-500">
+                                    AI & Automation
+                                    </span>
+                                </span>
+                                </h1>
+                                
+                                <p className="mt-6 text-xl md:text-2xl text-slate-300 leading-relaxed font-light">
+                                Skilled in Python, SQL, TensorFlow, and data visualization. Experienced in machine learning projects and IoT automation with strong problem-solving and data analysis skills.
+                                </p>
+                                
+                                <div className="mt-12 flex flex-col sm:flex-row gap-6">
+                                <a href="resume.pdf" download="H_P_SHASHANK_.pdf" className="group relative px-8 py-4 bg-orange-600 rounded-xl font-bold text-white shadow-[0_10px_20px_rgba(234,88,12,0.4)] hover:shadow-[0_20px_40px_rgba(234,88,12,0.6)] hover:-translate-y-1 transition-all duration-300 overflow-hidden border border-orange-400/20 inline-block">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700"></div>
+                                    <span className="flex items-center text-lg font-mono">
+                                    Download Resume  <ExternalLink className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                    </span>
+                                </a>
+                                <button onClick={() => scrollToSection('contact')} className="px-8 py-4 bg-slate-800/40 backdrop-blur-md text-white border border-slate-700/50 rounded-xl font-bold hover:bg-slate-700/50 hover:border-slate-500 transition-all duration-300 hover:-translate-y-1 font-mono">
+                                    Get In Touch
+                                </button>
+                                </div>
+                            </div>
+
+                            {/* Right Side - Photo */}
+                            <div className="flex justify-center lg:justify-end">
+                                <div className="relative group">
+                                    {/* Glowing background effect */}
+                                    <div className="absolute -inset-4 bg-gradient-to-r from-orange-600 via-pink-600 to-indigo-600 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                                    
+                                    {/* Image container */}
+                                    <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl transform transition-all duration-500 group-hover:scale-105 group-hover:border-orange-500/50">
+                                        <img 
+                                            src="profile.jpg" 
+                                            alt="H P SHASHANK" 
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                e.target.style.display = 'none';
+                                                e.target.nextSibling.style.display = 'flex';
+                                            }}
+                                        />
+                                        {/* Fallback placeholder if image not found */}
+                                        <div className="hidden w-full h-full bg-gradient-to-br from-orange-500/20 to-indigo-500/20 flex items-center justify-center">
+                                            <div className="text-center p-8">
+                                                <div className="w-24 h-24 bg-gradient-to-br from-orange-500 to-indigo-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                                    <span className="text-4xl font-bold text-white">HP</span>
+                                                </div>
+                                                <p className="text-slate-400 font-mono text-sm">Upload your photo as "profile.jpg"</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Decorative floating elements */}
+                                    <div className="absolute -top-6 -right-6 w-16 h-16 bg-orange-500/20 rounded-full border border-orange-500/30 backdrop-blur-sm animate-pulse"></div>
+                                    <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-indigo-500/20 rounded-full border border-indigo-500/30 backdrop-blur-sm animate-pulse" style={{animationDelay: '1s'}}></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     </header>
@@ -349,7 +388,7 @@
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { icon: Code, color: 'orange', title: 'Programming', desc: 'C++, Python, JavaScript, HTML, CSS' },
+                            { icon: Code, color: 'orange', title: 'Programming', desc: ' Python, SQL' },
                             { icon: Database, color: 'indigo', title: 'Databases', desc: 'SQL, MongoDB' },
                             { icon: BarChart3, color: 'pink', title: 'Data Visualization', desc: 'Power BI, Tableau' },
                             { icon: Brain, color: 'green', title: 'ML & AI', desc: 'TensorFlow, OpenCV, Pandas, NumPy, CNN' },
@@ -399,6 +438,13 @@
                                 tech: 'UiPath, AI Document Processing, Email Automation',
                                 impact: 'Reduced manual email handling by ~90%',
                                 color: 'pink'
+                            },
+                            { 
+                                title: 'Deepfake Image Detection System', 
+                                desc: 'Developed an AI-powered deepfake image detection system using EfficientNet-B4 with transfer learning to identify manipulated images in real time. Deployed a production-ready Flask web application for real-time image analysis and predictions.',
+                                tech: 'Python, PyTorch, EfficientNet, Flask, Computer Vision',
+                                impact: '83.33% accuracy, 97.06% precision, <1 second inference time',
+                                color: 'green'
                             }
                         ].map((project, index) => (
                             <div key={index} className="group relative bg-slate-900/60 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)] hover:border-orange-500/50">
@@ -432,11 +478,12 @@
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
-                            'Introduction to Internet of Things – NPTEL',
-                            'Data Visualization – Tata Forage',
-                            'Data Analysis Micro Degree – EdyodA',
-                            'Geo-data Sharing and Cyber Security – ISRO',
-                            'Robotic Process Automation (RPA) – 6-Day Student Development Program'
+                            { name: 'Introduction to Internet of Things – NPTEL', file: 'NPTEL.pdf' },
+                            { name: 'Data Visualization – Tata Forage', file: 'certificate-data-visualization.pdf' },
+                            { name: 'Data Analysis Micro Degree – EdyodA', file: 'certificate-data-analysis.pdf' },
+                            { name: 'Geo-data Sharing and Cyber Security – ISRO', file: 'isro certificate.pdf' },
+                            { name: 'Robotic Process Automation (RPA) – 6-Day Student Development Program', file: 'certificate-rpa.pdf' },
+                            { name: 'Oracle Cloud Infrastructure 2025 Certified Data Science Professional – Oracle University', file: 'oracle-certificate.pdf' }
                         ].map((cert, index) => (
                             <div key={index} className="group relative bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl shadow-2xl border border-white/10 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(249,115,22,0.2)] hover:border-orange-500/50">
                             <div className="flex items-start gap-4">
@@ -444,10 +491,10 @@
                                     <Award className="h-6 w-6 text-orange-400" />
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="text-lg font-bold text-white mb-2">{cert}</h3>
-                                    <button className="text-sm text-orange-400 hover:text-orange-300 font-mono flex items-center gap-1">
+                                    <h3 className="text-lg font-bold text-white mb-2">{cert.name}</h3>
+                                    <a href={cert.file} target="_blank" rel="noopener noreferrer" className="text-sm text-orange-400 hover:text-orange-300 font-mono flex items-center gap-1 transition-colors cursor-pointer">
                                         View Certification <ExternalLink className="h-4 w-4" />
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                             </div>
@@ -499,7 +546,7 @@
                     </div>
                     </section>
 
-                    {/* Contact Section */}
+{/* Contact Section */}
                     <footer id="contact" className="relative bg-transparent text-white py-32 overflow-hidden">
                     <div className="relative max-w-5xl mx-auto px-4 text-center z-10">
                         <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight leading-tight">
@@ -551,9 +598,19 @@
             );
         };
 
-        const root = createRoot(document.getElementById('root'));
-        root.render(<App />);
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.error('Error:', e);
+            document.getElementById('root').innerHTML = '<div style="color: white; padding: 20px; text-align: center;"><h1>Error Loading Page</h1><p>Please check the browser console for details.</p></div>';
+        });
+
+        try {
+            const root = createRoot(document.getElementById('root'));
+            root.render(<App />);
+        } catch (error) {
+            console.error('React rendering error:', error);
+            document.getElementById('root').innerHTML = '<div style="color: white; padding: 20px; text-align: center;"><h1>Error Loading Page</h1><p>' + error.message + '</p></div>';
+        }
     </script>
 </body>
 </html>
-
